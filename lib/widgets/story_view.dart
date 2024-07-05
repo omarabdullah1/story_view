@@ -161,7 +161,7 @@ class StoryItem {
 
   /// Shorthand for creating inline image. [controller] should be same instance as
   /// one passed to the `StoryView`
- factory StoryItem.inlineImage({
+  factory StoryItem.inlineImage({
     required String url,
     Text? caption,
     required StoryController controller,
@@ -171,8 +171,6 @@ class StoryItem {
     bool shown = false,
     bool roundedTop = true,
     bool roundedBottom = false,
-    double roundedBottomRadius = 8.0,
-    double roundedTopRadius = 8.0,
     Widget? loadingWidget,
     Widget? errorWidget,
     EdgeInsetsGeometry? captionOuterPadding,
@@ -220,6 +218,11 @@ class StoryItem {
             ),
           ),
         ),
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(roundedTop ? 8 : 0),
+          bottom: Radius.circular(roundedBottom ? 8 : 0),
+        ),
+      ),
       shown: shown,
       duration: duration ?? Duration(seconds: 3),
     );
